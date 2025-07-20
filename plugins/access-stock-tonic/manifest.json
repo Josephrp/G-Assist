@@ -1,0 +1,199 @@
+{
+  "manifestVersion": 1,
+  "executable": "./access_stock_tonic.exe",
+  "persistent": true,
+  "functions": [
+
+    {
+      "name": "set_keyboard_color",
+      "description": "Set the color of the keyboard or RGB device using OpenRGB.",
+      "tags": ["lighting", "keyboard", "rgb", "color"],
+      "properties": {
+        "color": {
+          "type": "string",
+          "description": "The color to set (e.g., red, green, blue, etc.)"
+        }
+      }
+    },
+    {
+      "name": "list_supported_colors",
+      "description": "List all supported color names for keyboard/device lighting.",
+      "tags": ["lighting", "keyboard", "rgb", "color", "discovery"],
+      "properties": {}
+    },
+    {
+      "name": "configure_color_feedback",
+      "description": "Configure color feedback for event proximity (e.g., none, near, imminent) and assign a color to each mode.",
+      "tags": ["lighting", "keyboard", "rgb", "color", "feedback"],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "description": "The feedback mode to configure (none, near, imminent)"
+        },
+        "color": {
+          "type": "string",
+          "description": "The color to assign to this mode (must be a supported color)"
+        }
+      }
+    },
+    {
+      "name": "auto_color_update",
+      "description": "Automatically update keyboard/device color based on event proximity in the calendar (uses color feedback configuration).",
+      "tags": ["lighting", "keyboard", "rgb", "color", "feedback", "automation"],
+      "properties": {}
+    },
+    {
+      "name": "predict_daily",
+      "description": "Run daily stock prediction with advanced features.",
+      "tags": ["prediction", "stock", "daily", "analysis"],
+      "properties": {
+        "symbol": {"type": "string", "description": "Stock symbol (e.g., AAPL)"},
+        "prediction_days": {"type": "integer", "description": "Days to predict", "optional": true},
+        "lookback_days": {"type": "integer", "description": "Historical lookback days", "optional": true},
+        "strategy": {"type": "string", "description": "Prediction strategy (chronos, technical)", "optional": true},
+        "use_ensemble": {"type": "boolean", "optional": true},
+        "use_regime_detection": {"type": "boolean", "optional": true},
+        "use_stress_testing": {"type": "boolean", "optional": true},
+        "risk_free_rate": {"type": "number", "optional": true},
+        "market_index": {"type": "string", "optional": true},
+        "chronos_weight": {"type": "number", "optional": true},
+        "technical_weight": {"type": "number", "optional": true},
+        "statistical_weight": {"type": "number", "optional": true},
+        "random_real_points": {"type": "integer", "optional": true},
+        "use_smoothing": {"type": "boolean", "optional": true},
+        "smoothing_type": {"type": "string", "optional": true},
+        "smoothing_window": {"type": "integer", "optional": true},
+        "smoothing_alpha": {"type": "number", "optional": true},
+        "use_covariates": {"type": "boolean", "optional": true},
+        "use_sentiment": {"type": "boolean", "optional": true}
+      }
+    },
+    {
+      "name": "predict_hourly",
+      "description": "Run hourly stock prediction with advanced features.",
+      "tags": ["prediction", "stock", "hourly", "analysis"],
+      "properties": {
+        "symbol": {"type": "string", "description": "Stock symbol (e.g., AAPL)"},
+        "prediction_days": {"type": "integer", "optional": true},
+        "lookback_days": {"type": "integer", "optional": true},
+        "strategy": {"type": "string", "optional": true},
+        "use_ensemble": {"type": "boolean", "optional": true},
+        "use_regime_detection": {"type": "boolean", "optional": true},
+        "use_stress_testing": {"type": "boolean", "optional": true},
+        "risk_free_rate": {"type": "number", "optional": true},
+        "market_index": {"type": "string", "optional": true},
+        "chronos_weight": {"type": "number", "optional": true},
+        "technical_weight": {"type": "number", "optional": true},
+        "statistical_weight": {"type": "number", "optional": true},
+        "random_real_points": {"type": "integer", "optional": true},
+        "use_smoothing": {"type": "boolean", "optional": true},
+        "smoothing_type": {"type": "string", "optional": true},
+        "smoothing_window": {"type": "integer", "optional": true},
+        "smoothing_alpha": {"type": "number", "optional": true},
+        "use_covariates": {"type": "boolean", "optional": true},
+        "use_sentiment": {"type": "boolean", "optional": true}
+      }
+    },
+    {
+      "name": "predict_min15",
+      "description": "Run 15-minute interval stock prediction with advanced features.",
+      "tags": ["prediction", "stock", "min15", "analysis"],
+      "properties": {
+        "symbol": {"type": "string", "description": "Stock symbol (e.g., AAPL)"},
+        "prediction_days": {"type": "integer", "optional": true},
+        "lookback_days": {"type": "integer", "optional": true},
+        "strategy": {"type": "string", "optional": true},
+        "use_ensemble": {"type": "boolean", "optional": true},
+        "use_regime_detection": {"type": "boolean", "optional": true},
+        "use_stress_testing": {"type": "boolean", "optional": true},
+        "risk_free_rate": {"type": "number", "optional": true},
+        "market_index": {"type": "string", "optional": true},
+        "chronos_weight": {"type": "number", "optional": true},
+        "technical_weight": {"type": "number", "optional": true},
+        "statistical_weight": {"type": "number", "optional": true},
+        "random_real_points": {"type": "integer", "optional": true},
+        "use_smoothing": {"type": "boolean", "optional": true},
+        "smoothing_type": {"type": "string", "optional": true},
+        "smoothing_window": {"type": "integer", "optional": true},
+        "smoothing_alpha": {"type": "number", "optional": true},
+        "use_covariates": {"type": "boolean", "optional": true},
+        "use_sentiment": {"type": "boolean", "optional": true}
+      }
+    },
+    {
+      "name": "calendar_tool",
+      "description": "Manages tracked tickers and retrieves their important calendar events (earnings, dividends, etc.) using yfinance.",
+      "tags": ["calendar", "events", "earnings", "dividends"],
+      "properties": {
+        "action": {
+          "type": "string",
+          "description": "Action to perform: add, remove, update, today, get_events"
+        },
+        "symbol": {
+          "type": "string",
+          "description": "Ticker symbol (required for add, remove, get_events)",
+          "optional": true
+        }
+      }
+    },
+    {
+      "name": "stock_selection",
+      "description": "Intelligently selects and ranks stocks for structured products based on analysis data and user preferences. Takes stock analysis results and user preferences, returns selected stocks with scores and weights.",
+      "tags": ["stock", "selection", "analysis", "ai", "portfolio"],
+      "properties": {
+        "analysis_results": {
+          "type": "string",
+          "description": "JSON string of stock analysis results"
+        },
+        "user_preferences": {
+          "type": "string",
+          "description": "JSON string of user investment preferences",
+          "optional": true
+        },
+        "target_count": {
+          "type": "integer",
+          "description": "Target number of stocks to select",
+          "optional": true
+        },
+        "min_count": {
+          "type": "integer",
+          "description": "Minimum number of stocks to select",
+          "optional": true
+        }
+      }
+    },
+    {
+      "name": "stock_picker_workflow",
+      "description": "Run a simple workflow to process a user query and return a list of discovered stocks using the query processor and stock picker agents.",
+      "tags": ["stock", "picker", "workflow", "ai", "discovery"],
+      "properties": {
+        "user_query": {
+          "type": "string",
+          "description": "The user's query or investment criteria for stock discovery."
+        }
+      }
+    },
+    {
+      "name": "stock_analyzer_workflow",
+      "description": "Run a workflow to process a user query, analyze a stock, and return a plot and summary using the query processor, analyzer, and summarizer agents.",
+      "tags": ["stock", "analyzer", "workflow", "ai", "summary", "plot"],
+      "properties": {
+        "user_query": {
+          "type": "string",
+          "description": "The user's query or investment criteria for stock analysis."
+        }
+      }
+    },
+    {
+      "name": "product_bundler_workflow",
+      "description": "Run a workflow to process a user query and create a structured equity product bundle using the product bundler workflow.",
+      "tags": ["product", "bundler", "workflow", "equity", "ai", "bundle"],
+      "properties": {
+        "user_query": {
+          "type": "string",
+          "description": "The user's query or investment criteria for product bundling."
+        }
+      }
+    }
+  ]
+}
